@@ -40,5 +40,37 @@ class EscolasController extends AppController {
             }
         }
     }
+
+    public function edit($id = null) {
+        if ($this->request->is('ajax')) {
+            $this->layout = false;
+        }
+        if (!empty($this->request->data)) {
+            if ($this->Escola->save($this->request->data)) {
+                $this->Flash->bootstrap('Escola alterado com sucesso!', array('key' => 'success'));
+                $this->redirect('/escolas');
+            }
+        } else {
+            $fields = array('Escola.id', 'Escola.nome');
+            $conditions = array('Escola.id' => $id);
+            $this->request->data = $this->Escola->find('first', compact('fields', 'conditions'));
+        }
+   }
+
+    public function view($id = null) {
+        if ($this->request->is('ajax')) {
+            $this->layout = false;
+        }
+        $fields = array('Escola.id', 'Escola.nome');
+        $conditions = array('Escola.id' => $id);
+        $this->request->data = $this->Escola->find('first', compact('fields', 'conditions'));
+    }
+
+    public function delete($id) {
+        $this->Escola->delete($id);
+        $this->Flash->bootstrap('Escola excluída com sucesso!', array('key' => 'warning'));
+        $this->redirect('/escolas');
+    }
+
 }
 ?>

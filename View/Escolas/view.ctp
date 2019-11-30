@@ -1,11 +1,11 @@
 <?php
 $this->extend('/Common/form');
-$this->assign('title', 'Cadastro de Escola');
+$this->assign('title', 'Visualizar Escola');
 $controllerName = $this->request->params['controller'];
 
 $formFields = $this->element('formCreate');
 $formFields .= $this->Form->hidden('Escola.id');
-$formFields .= $this->Html->div('form-row',  
+$formFields .= $this->Html->div('form-row',
     $this->Form->input('Escola.nome', array(
         'div' => array('class' => 'form-group col-md-6 offset-mr-6'),
         'class' => array('form-control'),
