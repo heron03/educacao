@@ -27,7 +27,7 @@ $formFields .= $this->Html->div('form-row my-2',
         'disabled' => false,
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     )) .
-    $this->Form->input('Turma.Semestre', array(
+    $this->Form->input('Turma.semestre', array(
         'div' => array('class' => 'form-group col-md-2 offset-mr-4'),
         'class' => array('form-control'),
         'type' => 'numeric',
