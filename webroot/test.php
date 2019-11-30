@@ -43,7 +43,7 @@ if (!defined('ROOT')) {
  * The actual directory name for the "app".
  */
 if (!defined('APP_DIR')) {
-	define('APP_DIR', basename(dirname(dirname(__FILE__))));
+	define('APP_DIR', 'apps' . DS . 'educacao');
 }
 
 /**
@@ -64,7 +64,7 @@ if (!defined('CONFIG')) {
  * The following line differs from its sibling
  * /lib/Cake/Console/Templates/skel/webroot/test.php
  */
-//define('CAKE_CORE_INCLUDE_PATH', ROOT . DS . 'lib');
+define('CAKE_CORE_INCLUDE_PATH', ROOT . DS . 'cake_2.10' . DS . 'lib');
 
 /**
  * This auto-detects CakePHP as a composer installed library.
