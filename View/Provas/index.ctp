@@ -26,8 +26,9 @@ $this->assign('tableHeaders', $tableHeaders);
 
 $detalhe = array();
 foreach ($provas as $prova) { 
+    $viewData = date('d/m/Y', strtotime($prova['Prova']['data']));
     $viewNome = $this->Js->link($prova['Prova']['nome'], '/provas/view/' . $prova['Prova']['id'], array('update' => '#content'));
-    $viewData = $this->Js->link($prova['Prova']['data'], '/provas/view/' . $prova['Prova']['id'], array('update' => '#content'));
+    $viewData = $this->Js->link($viewData, '/provas/view/' . $prova['Prova']['id'], array('update' => '#content'));
     $editLink = $this->Js->link($this->Html->tag('span', '', array('class' => 'fas fa-pen')), '/provas/edit/' . $prova['Prova']['id'], array('update' => '#content', 'class' => 'btn btn-secondary float-right ml-2', 'escape' => false, 'title' => 'Alterar'));
     $excluirLink = $this->Js->link($this->Html->tag('span', '', array('class' => 'fas fa-trash')), '/provas/delete/' . $prova['Prova']['id'], array('update' => '#content', 'class' => 'btn btn-secondary float-right ml-2', 'title' => 'delete', 'escape' => false, 'confirm' => 'Confirmar Exclusão ?'));
 

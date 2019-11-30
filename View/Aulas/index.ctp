@@ -26,11 +26,12 @@ $this->assign('tableHeaders', $tableHeaders);
 
 $detalhe = array();
 foreach ($aulas as $aula) { 
+    $viewData = date('d/m/Y', strtotime($aula['Aula']['data']));
     $viewNome = $this->Js->link($aula['Aula']['nome'], '/aulas/view/' . $aula['Aula']['id'], array('update' => '#content'));
-    $viewData = $this->Js->link($aula['Aula']['data'], '/aulas/view/' . $aula['Aula']['id'], array('update' => '#content'));
+    $viewData = $this->Js->link($viewData, '/aulas/view/' . $aula['Aula']['id'], array('update' => '#content'));
     $editLink = $this->Js->link($this->Html->tag('span', '', array('class' => 'fas fa-pen')), '/aulas/edit/' . $aula['Aula']['id'], array('update' => '#content', 'class' => 'btn btn-secondary float-right ml-2', 'escape' => false, 'title' => 'Alterar'));
     $excluirLink = $this->Js->link($this->Html->tag('span', '', array('class' => 'fas fa-trash')), '/aulas/delete/' . $aula['Aula']['id'], array('update' => '#content', 'class' => 'btn btn-secondary float-right ml-2', 'title' => 'delete', 'escape' => false, 'confirm' => 'Confirmar Exclusão ?'));
-
+    
     $detalhe[] = array(
         $viewData,
         $aula['Disciplina']['nome'],
