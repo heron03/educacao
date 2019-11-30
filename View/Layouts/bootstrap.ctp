@@ -63,6 +63,8 @@
     <?php
     echo $this->Html->script('jquery-3.4.1.min.js');
     echo $this->Html->script('vlibras-plugin.js');
+    echo $this->Html->script('inputmask/jquery.inputmask.min.js');
+    echo $this->Html->script('inputmask/bindings/inputmask.binding.js');
     echo $this->Html->script('bootstrap.bundle.min.js');
     echo $this->Js->writeBuffer();
     ?>
