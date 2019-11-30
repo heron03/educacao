@@ -15,7 +15,7 @@ if ($actionName != 'view') {
 }
 $form .= $this->Js->link($this->Html->tag('i', '', array('class' => 'fas fa-undo')) .
     ' Voltar',
-    '/escolas',
+    '/' . $controllerName,
     array(
         'class' => 'btn btn-secondary mt-4',
         'escape' => false,

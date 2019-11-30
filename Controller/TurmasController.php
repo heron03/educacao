@@ -40,6 +40,10 @@ class TurmasController extends AppController {
                 $this->redirect('/turmas');
             }
         }
+
+        $fields = array('Curso.nome');
+        $cursos = $this->Curso->find('list', compact('fields'));
+        $this->set('cursos', $cursos);
     }
 
     public function edit($id = null) {
@@ -52,23 +56,31 @@ class TurmasController extends AppController {
                 $this->redirect('/turmas');
             }
         } else {
-            $fields = array('Turma.id', 'Turma.nome', 'Turma.semestres', 'Turma.ano');
+            $fields = array('Turma.id', 'Turma.curso_id', 'Turma.semestres', 'Turma.ano');
             $conditions = array('Turma.id' => $id);
             $this->request->data = $this->Turma->find('first', compact('fields', 'conditions'));
         }
+        
+        $fields = array('Curso.nome');
+        $cursos = $this->Curso->find('list', compact('fields'));
+        $this->set('cursos', $cursos);
    }
 
     public function view($id = null) {
         if ($this->request->is('ajax')) {
             $this->layout = false;
         }
-        $fields = array('Turma.id', 'Turma.nome');
+        $fields = array('Turma.id', 'Turma.curso_id', 'Turma.semestres', 'Turma.ano');
         $conditions = array('Turma.id' => $id);
         $this->request->data = $this->Turma->find('first', compact('fields', 'conditions'));
+
+        $fields = array('Curso.nome');
+        $cursos = $this->Curso->find('list', compact('fields'));
+        $this->set('cursos', $cursos);
     }
 
     public function delete($id) {
-        $this->Curso->delete($id);
+        $this->Turma->delete($id);
         $this->Flash->bootstrap('Turma excluída com sucesso!', array('key' => 'warning'));
         $this->redirect('/turmas');
     }
