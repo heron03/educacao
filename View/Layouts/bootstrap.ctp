@@ -19,22 +19,22 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Disciplinas <span class="sr-only"></span></a>
+        <a class="nav-link" href="/educacao/disciplinas">Disciplinas <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Aulas</a>
+        <a class="nav-link" href="/educacao/aulas">Aulas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Provas</a>
+        <a class="nav-link" href="/educacao/provas">Provas</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Instituição
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Escolas</a>
-          <a class="dropdown-item" href="#">Cursos</a>
-          <a class="dropdown-item" href="#">Turmas</a>
+          <a class="dropdown-item" href="/educacao/escolas">Escolas</a>
+          <a class="dropdown-item" href="/educacao/cursos">Cursos</a>
+          <a class="dropdown-item" href="/educacao/turmas">Turmas</a>
         </div>
       </li>
     </ul>
