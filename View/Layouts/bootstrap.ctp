@@ -53,12 +53,22 @@
             </div>
         </div>
     </main>
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
 
     <?php
     echo $this->Html->script('jquery-3.4.1.min.js');
+    echo $this->Html->script('vlibras-plugin.js');
     echo $this->Html->script('bootstrap.bundle.min.js');
     echo $this->Js->writeBuffer();
     ?>
+    <script>
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
 
 </html>
