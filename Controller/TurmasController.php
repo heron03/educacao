@@ -1,12 +1,12 @@
 <?php
 App::uses('AppController', 'Controller');
 class TurmasController extends AppController {
-    public $uses = array('Turma', 'Curso');
     public $paginate = array(
         'fields' => array(
             'Turma.id',
             'Turma.semestres',
-            'Turma.curso_id'
+            'Turma.curso_id',
+            'Curso.nome'
         ),
         'order' => array('Turma.id' => 'desc'),
         'limit' => 10
