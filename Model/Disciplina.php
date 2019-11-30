@@ -1,13 +1,13 @@
 <?php
 App::uses('AppModel', 'Model');
 
-class Campanha extends AppModel {
+class Disciplina extends AppModel {
     public $actsAs = array(
         'Containable'
     );
      
     public $belongsTo = array(
-        'Curso'
+        'Usuario'
     );
 }
 ?>

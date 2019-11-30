@@ -7,6 +7,7 @@ class DisciplinasController extends AppController {
             'Disciplina.id',
             'Disciplina.nome',
             'Disciplina.turma_id',
+            'Usuario.nome'
         ),
         'order' => array('Disciplina.id' => 'desc'),
         'limit' => 10

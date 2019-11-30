@@ -31,7 +31,7 @@ foreach ($disciplinas as $disciplina) {
 
     $detalhe[] = array(
         $viewNome,
-        $disciplina['Usuario']['Profesor'],
+        $disciplina['Usuario']['nome'],
         $excluirLink.$editLink
     );
     $imprimirLink = null;
