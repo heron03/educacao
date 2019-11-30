@@ -9,7 +9,7 @@ class AppController extends Controller {
     public function index() {
         $this->setPaginateConditions();
         try {
-            $this->set($this->getControllerName(), $this->paginate());
+            $this->set($this->getControllerName(), $this->paginate());        
         } catch (NotFoundException $e) {
             $this->redirect('/' . $this->getControllerName());
         }
