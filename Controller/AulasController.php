@@ -7,6 +7,7 @@ class AulasController extends AppController {
             'Aula.id',
             'Aula.nome',
             'Aula.data',
+            'Disciplina.nome'
         ),
         'order' => array('Aula.id' => 'desc'),
         'limit' => 10
