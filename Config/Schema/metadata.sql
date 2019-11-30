@@ -43,6 +43,7 @@ DROP TABLE IF EXISTS `turmas`;
 CREATE TABLE `turmas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `semestres` int(2) DEFAULT NULL,
+  `ano` varchar(4) DEFAULT NULL,
   `curso_id` int(11) DEFAULT NULL,
   `usuarios_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
