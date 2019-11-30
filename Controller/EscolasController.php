@@ -47,7 +47,7 @@ class EscolasController extends AppController {
         }
         if (!empty($this->request->data)) {
             if ($this->Escola->save($this->request->data)) {
-                $this->Flash->bootstrap('Escola alterado com sucesso!', array('key' => 'success'));
+                $this->Flash->bootstrap('Escola editada com sucesso!', array('key' => 'success'));
                 $this->redirect('/escolas');
             }
         } else {
