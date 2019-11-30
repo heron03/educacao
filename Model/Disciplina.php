@@ -7,7 +7,8 @@ class Disciplina extends AppModel {
     );
      
     public $belongsTo = array(
-        'Usuario'
+        'Usuario',
+        'Turma'
     );
 }
 ?>
