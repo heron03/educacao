@@ -17,5 +17,9 @@ class AppController extends Controller {
             $this->layout = false;
         }
     }
+
+    public function getControllerName() {
+        return $this->request->params['controller'];
+    }
 }
 ?>

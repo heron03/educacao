@@ -6,6 +6,7 @@
     <?php
     echo $this->Html->css('bootstrap.min.css');
     echo $this->Html->css('fontawesome.min.css');
+    echo $this->Html->css('font.css');
     ?>
 </head>
 <body>
