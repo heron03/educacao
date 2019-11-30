@@ -42,7 +42,6 @@ CREATE TABLE `usuarios` (
 DROP TABLE IF EXISTS `turmas`;
 CREATE TABLE `turmas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) DEFAULT NULL,
   `semestres` int(2) DEFAULT NULL,
   `curso_id` int(11) DEFAULT NULL,
   `usuarios_id` int(11) DEFAULT NULL,
