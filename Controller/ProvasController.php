@@ -1,12 +1,13 @@
 <?php
 App::uses('AppController', 'Controller');
 class ProvasController extends AppController {
-    public $uses = array('Prova', 'Curso');
+    public $uses = array('Prova', 'Disciplina');
     public $paginate = array(
         'fields' => array(
             'Prova.id',
             'Prova.nome',
             'Prova.data',
+            'Disciplina.nome'
         ),
         'order' => array('Prova.id' => 'desc'),
         'limit' => 10
