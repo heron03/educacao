@@ -26,7 +26,7 @@ $this->assign('tableHeaders', $tableHeaders);
 
 $detalhe = array();
 foreach ($provas as $prova) { 
-    $viewData = date('d/m/Y', strtotime($prova['Prova']['data']));
+    $viewData = date('d/m/Y h:i', strtotime($prova['Prova']['data'] . $prova['Prova']['hora']));
     $viewNome = $this->Js->link($prova['Prova']['nome'], '/provas/view/' . $prova['Prova']['id'], array('update' => '#content'));
     $viewData = $this->Js->link($viewData, '/provas/view/' . $prova['Prova']['id'], array('update' => '#content'));
     $editLink = $this->Js->link($this->Html->tag('span', '', array('class' => 'fas fa-pen')), '/provas/edit/' . $prova['Prova']['id'], array('update' => '#content', 'class' => 'btn btn-secondary float-right ml-2', 'escape' => false, 'title' => 'Alterar'));
