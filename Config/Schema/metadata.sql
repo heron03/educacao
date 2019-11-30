@@ -54,8 +54,8 @@ CREATE TABLE `turmas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `diciplinas`;
-CREATE TABLE `diciplinas` (
+DROP TABLE IF EXISTS `disciplinas`;
+CREATE TABLE `disciplinas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) DEFAULT NULL,
   `turma_id` int(11) DEFAULT NULL,
@@ -64,8 +64,8 @@ CREATE TABLE `diciplinas` (
   `blocked` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `diciplinas_turma_id_fk` FOREIGN KEY (`turma_id`) REFERENCES `turmas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `diciplinas_usuarios_id_fk` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `disciplinas_turma_id_fk` FOREIGN KEY (`turma_id`) REFERENCES `turmas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `disciplinas_usuarios_id_fk` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -78,7 +78,7 @@ CREATE TABLE `aulas` (
   `blocked` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `aulas_diciplina_id_fk` FOREIGN KEY (`diciplina_id`) REFERENCES `diciplinas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `aulas_diciplina_id_fk` FOREIGN KEY (`diciplina_id`) REFERENCES `disciplinas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -91,7 +91,7 @@ CREATE TABLE `provas` (
   `blocked` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `provas_diciplina_id_fk` FOREIGN KEY (`diciplina_id`) REFERENCES `diciplinas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `provas_diciplina_id_fk` FOREIGN KEY (`diciplina_id`) REFERENCES `disciplinas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
