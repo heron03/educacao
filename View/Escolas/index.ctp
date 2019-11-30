@@ -15,8 +15,8 @@ $searchFields .= $this->Form->input(
 $this->assign('searchFields', $searchFields);
 
 $titulos = array(
-    array($this->Paginator->sort('Escola.nome', 'Nome') => array('width' => '20%')),
-    array('' => array('width' => '28%')),
+    array($this->Paginator->sort('Escola.nome', 'Nome') => array('width' => '80%')),
+    array('' => array('width' => '20%')),
 );
 
 $tableHeaders = $this->Html->tableHeaders($titulos);
@@ -31,7 +31,6 @@ foreach ($escolas as $escola) {
 
     $detalhe[] = array(
         $viewNome,
-        $escola['Conteudo']['nome'],
         $excluirLink.$editLink
     );
     $imprimirLink = null;
