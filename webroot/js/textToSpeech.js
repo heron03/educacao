@@ -13,28 +13,20 @@ onload = function() {
 		function onClickPlay() {
 			if (!flag) {
 				flag = true;
-				utterance = new SpeechSynthesisUtterance(document.querySelector('body').textContent);
+				utterance = new SpeechSynthesisUtterance(document.querySelector('#ler').textContent);
 				utterance.voice = getVoices()[0];
 				utterance.onend = function() {
 					flag = false;
-					playEle.className = pauseEle.className = '';
-					stopEle.className = 'stopped';
 				};
-				playEle.className = 'played';
-				stopEle.className = '';
 				speak(utterance);
 			}
 			if (paused) { /* unpause/resume narration */
-				playEle.className = 'played';
-				pauseEle.className = '';
 				resume();
 			}
 		}
 
 		function onClickPause() {
 			if (speaking && !paused) { /* pause narration */
-				pauseEle.className = 'paused';
-				playEle.className = '';
 				pause();
 			}
 		}
@@ -42,8 +34,6 @@ onload = function() {
 		function onClickStop() {
 			if (speaking) { /* stop narration */
 				/* for safari */
-				stopEle.className = 'stopped';
-				playEle.className = pauseEle.className = '';
 				flag = false;
 				cancel();
 

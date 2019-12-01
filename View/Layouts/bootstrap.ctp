@@ -13,21 +13,24 @@
 <div id='ler'>
 <div class="container-fluid bg-white">
     <a class="navbar-brand mr-auto"><p class="h4"> Educação 4.0 &nbsp;|&nbsp; <?php ?></p></a>
-    <button class='btn btn-success my-2 float-right' id="speakbt">
-      <i class="fa fa-microphone "></i>
-    </button>&nbsp;
-    <button class='btn btn-secondary my-2 float-right mr-2' id='stop'>
-      <i class="fas fa-stop"></i>
-    </button>
-    <button class='btn btn-secondary my-2 float-right' id='pause'>
-      <i class="fas fa-pause"></i>
-    </button> &nbsp;
-    <button class='btn btn-secondary my-2 float-right' id='play'>
-      <i class="fas fa-play"></i>
-    </button> &nbsp;
+      <div class='float-right'>
+        <button class='btn btn-success my-2' id="speakbt">
+            <i class="fa fa-microphone "></i>
+        </button>
+        <div class="btn-group" role="group">
+          <button class='btn btn-secondary my-2' id='play'>
+          <i class="fas fa-play"></i>
+        </button>
+          <button class='btn btn-secondary my-2' id='pause'>
+            <i class="fas fa-pause"></i>
+          </button>
+          <button class='btn btn-secondary my-2' id='stop'>
+            <i class="fas fa-stop"></i>
+          </button>
+      </div>
+    </div>
+</div>
     <div id="resultSpeak"></div> 
-
-  </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
