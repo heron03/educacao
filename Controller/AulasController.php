@@ -1,7 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 class AulasController extends AppController {
-    public $uses = array('Aula', 'Curso');
+    public $uses = array('Aula', 'Disciplina');
     public $paginate = array(
         'fields' => array(
             'Aula.id',
@@ -84,9 +84,8 @@ class AulasController extends AppController {
     if ($this->request->is('ajax')) {
         $this->layout = false;
         }
-        $fields = array('Aula.id', 'Aula.nome', 'Aula.disciplina_id', 'Aula.data');
         $conditions = array('Aula.id' => $id);
-        $this->request->data = $this->Aula->find('first', compact('fields', 'conditions'));
+        $this->request->data = $this->Aula->find('first', compact('conditions'));
         if (!empty($this->request->data['Aula']['data'])) {
             $this->request->data['Aula']['data'] = $this->Aula->userDate($this->request->data['Aula']['data']);
         }

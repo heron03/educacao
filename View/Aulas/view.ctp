@@ -12,7 +12,7 @@ $formFields .= $this->Html->div('form-row my-2',
         'type' => 'text',
         'label' => array('text' => 'Data'),
         'required' => false,
-        'disabled' => false,
+        'readonly' => true,
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
@@ -22,8 +22,8 @@ $formFields .= $this->Html->div('form-row my-2',
         'class' => array('form-control'),
         'type' => 'text',
         'label' => array('text' => 'Nome'),
-        'required' => false,
-        'disabled' => false,
+        'required' => true,
+        'readonly' => true,
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     )) . 
     $this->Form->input('Aula.disciplina_id', array(
@@ -31,40 +31,20 @@ $formFields .= $this->Html->div('form-row my-2',
         'class' => array('form-control'),
         'type' => 'select',
         'label' => array('text' => 'Disciplina'),
-        'required' => false,
-        'disabled' => false,
+        'required' => true,
+        'readonly' => true,
         'options' => $disciplinas,
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
-$formFields .= $this->Html->div('form-row my-2',  
-    $this->Form->input('Aula.pdf', array(
-        'label' => array('text' => 'Anexe um arquivo PDF', 'class' =>'input input-file', 'for' => 'file'),
-        'div' => array('class' => 'col-md-6 my-3 button', 'text' => 'Anexar documento...'),
-        'class' => 'form-control imagem-brasao form-control-sm',
-        'type' => 'file',
+$formFields .= $this->Html->div('form-row',
+    $this->Form->input('Aula.conteudo', array(
         'required' => false,
-        'disabled' => false,
-        'error' => array('attributes' => array('class' => 'invalid-feedback'))
-    )) . 
-    $this->Form->input('Aula.imagem', array(
-            'label' => array('text' => 'Anexe uma imagem', 'class' =>'input input-file', 'for' => 'file'),
-            'div' => array('class' => 'col-md-6 my-3 button', 'text' => 'Anexar documento...'),
-            'class' => 'form-control imagem-brasao form-control-sm',
-            'type' => 'file',
-            'required' => false,
-            'disabled' => false,
-            'error' => array('attributes' => array('class' => 'invalid-feedback'))
-    )) 
-);
-$formFields .= $this->Html->div('form-row my-2',
-    $this->Form->input('Aula.link', array(
-        'label' => array('text' => 'Link de Vídeo'),
-        'div' => array('class' => 'form-group col-md-6'),
-        'class' => array('form-control'),
-        'type' => 'text',
-        'required' => false,
-        'disabled' => false,
+        'label' => array('text' => 'Conteudo'),
+        'div' => array('class' => 'form-group col-md-12'),
+        'class' => 'form-control uppercase',
+        'type' => 'txt',
+        'rows' => 4,
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
