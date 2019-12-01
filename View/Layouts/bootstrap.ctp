@@ -10,9 +10,8 @@
     ?>
 </head>
 <body>
-<div id='ler'>
 <div class="container-fluid bg-white">
-    <a class="navbar-brand mr-auto"><p class="h4"> Educação 4.0 &nbsp;|&nbsp; <?php ?></p></a>
+    <a class="navbar-brand mr-auto"><p class="h4"> e-PNE &nbsp;|&nbsp; <?php ?></p></a>
       <div class='float-right'>
         <button class='btn btn-success my-2' id="speakbt">
             <i class="fa fa-microphone "></i>
@@ -30,6 +29,7 @@
       </div>
     </div>
 </div>
+<div id='ler'>
     <div id="resultSpeak"></div> 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
