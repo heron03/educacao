@@ -55,27 +55,21 @@ class ProvasController extends AppController {
                 $this->redirect('/provas');
             }
         } else {
-            $fields = array('Prova.id', 'Prova.curso_id', 'Prova.semestres', 'Prova.ano');
             $conditions = array('Prova.id' => $id);
-            $this->request->data = $this->Prova->find('first', compact('fields', 'conditions'));
+            $this->request->data = $this->Prova->find('first', compact('conditions'));
         }
-        
-        $fields = array('Curso.nome');
-        $cursos = $this->Curso->find('list', compact('fields'));
-        $this->set('cursos', $cursos);
+
+        $fields = array('Disciplina.id', 'Disciplina.nome');
+        $disciplinas = $this->Disciplina->find('list', compact('fields'));
+        $this->set('disciplinas', $disciplinas);
    }
 
     public function view($id = null) {
         if ($this->request->is('ajax')) {
             $this->layout = false;
         }
-        $fields = array('Prova.id', 'Prova.curso_id', 'Prova.semestres', 'Prova.ano');
         $conditions = array('Prova.id' => $id);
-        $this->request->data = $this->Prova->find('first', compact('fields', 'conditions'));
-
-        $fields = array('Curso.nome');
-        $cursos = $this->Curso->find('list', compact('fields'));
-        $this->set('cursos', $cursos);
+        $this->request->data = $this->Prova->find('first', compact('conditions'));
     }
 
     public function delete($id) {
@@ -83,6 +77,6 @@ class ProvasController extends AppController {
         $this->Flash->bootstrap('Prova excluída com sucesso!', array('key' => 'warning'));
         $this->redirect('/provas');
     }
-
+    
 }
 ?>

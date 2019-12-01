@@ -53,7 +53,7 @@ $formFields .= $this->Html->div('form-row', $this->Html->tag('h4', 'Exercício 1
 $formFields .= $this->Html->div('form-row',
     $this->Form->input('Prova.enunciado1', array(
         'required' => false,
-        'label' => array('text' => 'Enunciado'),
+        'label' => array('text' => 'Enunciado 1'),
         'div' => array('class' => 'form-group col-md-12'),
         'class' => 'form-control uppercase',
         'type' => 'textarea',
@@ -61,17 +61,19 @@ $formFields .= $this->Html->div('form-row',
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
-
-$formFields .= $this->Html->div('form-row', $this->Html->tag('h4', 'Exercício 1', array('class' => 'mt-4 col-md-11')));
-
 $formFields .= $this->Html->div('form-row',
-    $this->Form->input('Prova.enunciado1', array(
+    $this->Form->input('Prova.imagem1', array(
         'required' => false,
-        'label' => array('text' => 'Enunciado'),
-        'div' => array('class' => 'form-group col-md-12'),
+        'label' => array('text' => 'Foto 1', 'class' =>'input input-file', 'for' => 'file'),
+        'div' => array('class' => 'col-md-6 button', 'text' => 'Insira uma imagem'),
+        'class' => 'form-control imagem-brasao form-control-sm',
+        'type' => 'file',
+        'error' => array('attributes' => array('class' => 'invalid-feedback'))
+    )) . $this->Form->input('Prova.valor_enunciado1', array(
+        'required' => false,
+        'label' => array('text' => 'Valor do Exercício na Nota'),
+        'div' => array('class' => 'form-group col-md-2 offset-mr-4'),
         'class' => 'form-control uppercase',
-        'type' => 'textarea',
-        'rows' => 4,
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
@@ -80,7 +82,7 @@ $formFields .= $this->Html->div('form-row', $this->Html->tag('h4', 'Exercício 2
 $formFields .= $this->Html->div('form-row',
     $this->Form->input('Prova.enunciado2', array(
         'required' => false,
-        'label' => array('text' => 'Enunciado'),
+        'label' => array('text' => 'Enunciado 2'),
         'div' => array('class' => 'form-group col-md-12'),
         'class' => 'form-control uppercase',
         'type' => 'textarea',
@@ -88,16 +90,50 @@ $formFields .= $this->Html->div('form-row',
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
+$formFields .= $this->Html->div('form-row',
+    $this->Form->input('Prova.imagem2', array(
+        'required' => false,
+        'label' => array('text' => 'Foto 2', 'class' =>'input input-file', 'for' => 'file'),
+        'div' => array('class' => 'col-md-6 button', 'text' => 'Insira uma imagem'),
+        'class' => 'form-control imagem-brasao form-control-sm',
+        'type' => 'file',
+        'error' => array('attributes' => array('class' => 'invalid-feedback'))
+    )) . $this->Form->input('Prova.valor_enunciado2', array(
+        'required' => false,
+        'label' => array('text' => 'Valor do Exercício na Nota'),
+        'div' => array('class' => 'form-group col-md-2 offset-mr-4'),
+        'class' => 'form-control uppercase',
+        'error' => array('attributes' => array('class' => 'invalid-feedback'))
+    ))
+);
+
 $formFields .= $this->Html->div('form-row', $this->Html->tag('h4', 'Exercício 3', array('class' => 'mt-4 col-md-11')));
 
 $formFields .= $this->Html->div('form-row',
     $this->Form->input('Prova.enunciado3', array(
         'required' => false,
-        'label' => array('text' => 'Enunciado'),
+        'label' => array('text' => 'Enunciado 3'),
         'div' => array('class' => 'form-group col-md-12'),
         'class' => 'form-control uppercase',
         'type' => 'textarea',
         'rows' => 4,
+        'error' => array('attributes' => array('class' => 'invalid-feedback'))
+    ))
+);
+
+$formFields .= $this->Html->div('form-row',
+    $this->Form->input('Prova.imagem3', array(
+        'required' => false,
+        'label' => array('text' => 'Foto 3', 'class' =>'input input-file', 'for' => 'file'),
+        'div' => array('class' => 'col-md-6 button', 'text' => 'Insira uma imagem'),
+        'class' => 'form-control imagem-brasao form-control-sm',
+        'type' => 'file',
+        'error' => array('attributes' => array('class' => 'invalid-feedback'))
+    )) . $this->Form->input('Prova.valor_enunciado3', array(
+        'required' => false,
+        'label' => array('text' => 'Valor do Exercício na Nota'),
+        'div' => array('class' => 'form-group col-md-2 offset-mr-4'),
+        'class' => 'form-control uppercase',
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
@@ -106,7 +142,7 @@ $formFields .= $this->Html->div('form-row', $this->Html->tag('h4', 'Exercício 4
 $formFields .= $this->Html->div('form-row',
     $this->Form->input('Prova.enunciado4', array(
         'required' => false,
-        'label' => array('text' => 'Enunciado'),
+        'label' => array('text' => 'Enunciado 4'),
         'div' => array('class' => 'form-group col-md-12'),
         'class' => 'form-control uppercase',
         'type' => 'textarea',
@@ -114,12 +150,30 @@ $formFields .= $this->Html->div('form-row',
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
+
+$formFields .= $this->Html->div('form-row',
+    $this->Form->input('Prova.imagem4', array(
+        'required' => false,
+        'label' => array('text' => 'Foto 4', 'class' =>'input input-file', 'for' => 'file'),
+        'div' => array('class' => 'col-md-6 button', 'text' => 'Insira uma imagem'),
+        'class' => 'form-control imagem-brasao form-control-sm',
+        'type' => 'file',
+        'error' => array('attributes' => array('class' => 'invalid-feedback'))
+    )) . $this->Form->input('Prova.valor_enunciado4', array(
+        'required' => false,
+        'label' => array('text' => 'Valor do Exercício na Nota'),
+        'div' => array('class' => 'form-group col-md-2 offset-mr-4'),
+        'class' => 'form-control uppercase',
+        'error' => array('attributes' => array('class' => 'invalid-feedback'))
+    ))
+);
+
 $formFields .= $this->Html->div('form-row', $this->Html->tag('h4', 'Exercício 5', array('class' => 'mt-4 col-md-11')));
 
 $formFields .= $this->Html->div('form-row',
     $this->Form->input('Prova.enunciado5', array(
         'required' => false,
-        'label' => array('text' => 'Enunciado'),
+        'label' => array('text' => 'Enunciado 5'),
         'div' => array('class' => 'form-group col-md-12'),
         'class' => 'form-control uppercase',
         'type' => 'textarea',
@@ -127,6 +181,21 @@ $formFields .= $this->Html->div('form-row',
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
-
+$formFields .= $this->Html->div('form-row',
+    $this->Form->input('Prova.imagem5', array(
+        'required' => false,
+        'label' => array('text' => 'Foto 5', 'class' =>'input input-file', 'for' => 'file'),
+        'div' => array('class' => 'col-md-6 button', 'text' => 'Insira uma imagem'),
+        'class' => 'form-control imagem-brasao form-control-sm',
+        'type' => 'file',
+        'error' => array('attributes' => array('class' => 'invalid-feedback'))
+    )) . $this->Form->input('Prova.valor_enunciado5', array(
+        'required' => false,
+        'label' => array('text' => 'Valor do Exercício na Nota'),
+        'div' => array('class' => 'form-group col-md-2 offset-mr-4'),
+        'class' => 'form-control uppercase',
+        'error' => array('attributes' => array('class' => 'invalid-feedback'))
+    ))
+);
 
 $this->assign('formFields', $formFields);
