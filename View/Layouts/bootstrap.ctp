@@ -12,6 +12,10 @@
 <body>
 <div class="container-fluid bg-white">
         <a class="navbar-brand mr-auto"><p class="h4"> Educação 4.0 &nbsp;|&nbsp; <?php ?></p></a>
+        <button class='btn btn-success my-2 float-right' id="speakbt">
+          <i class="fa fa-microphone "></i>
+        </button>
+        <div id="resultSpeak"></div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,9 +42,15 @@
           <a class="dropdown-item" href="/educacao/turmas">Turmas</a>
         </div>
       </li>
+
     </ul>
   </div>
 </nav>
+<div class="search">
+            
+            
+
+        </div>
 <main role="main" class="container-fluid">
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             <div class="media text-muted pt-3">
@@ -59,10 +69,10 @@
         <div class="vw-plugin-top-wrapper"></div>
       </div>
     </div>
-
     <?php
     echo $this->Html->script('jquery-3.4.1.min.js');
     echo $this->Html->script('vlibras-plugin.js');
+    echo $this->Html->script('all.js');
     echo $this->Html->script('inputmask/jquery.inputmask.min.js');
     echo $this->Html->script('inputmask/bindings/inputmask.binding.js');
     echo $this->Html->script('bootstrap.bundle.min.js');

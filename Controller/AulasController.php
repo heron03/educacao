@@ -26,5 +26,28 @@ class AulasController extends AppController {
             $this->paginate['conditions']['Aula.Nome LIKE'] = '%' . trim($nome) . '%';
         }
     }
+
+    public function add() {
+        if ($this->request->is('ajax')) {
+            $this->layout = false;
+        }
+        if (!empty($this->request->data)) {
+            $this->Aula->create();
+            if ($this->Aula->save($this->request->data)) {
+                $this->Flash->bootstrap('Aula cadastrada com sucesso!', array('key' => 'success'));
+                $this->redirect('/aulas');
+            }
+        }
+    }
+
+    public function buscarRegistro($nome) {
+        $this->autoRender = false;
+        $conditions = array('Aula.nome' => $nome);
+        $fields = array('Aula.id');
+        $aula = $this->Aula->find('first', compact('fields', 'conditions'));
+        $aula = json_encode($aula);
+        
+        return $aula;
+   }
 }
 ?>
