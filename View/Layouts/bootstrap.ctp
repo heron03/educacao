@@ -11,12 +11,22 @@
 </head>
 <body>
 <div class="container-fluid bg-white">
-        <a class="navbar-brand mr-auto"><p class="h4"> Educação 4.0 &nbsp;|&nbsp; <?php ?></p></a>
-        <button class='btn btn-success my-2 float-right' id="speakbt">
-          <i class="fa fa-microphone "></i>
-        </button>
-        <div id="resultSpeak"></div>
-</div>
+    <a class="navbar-brand mr-auto"><p class="h4"> Educação 4.0 &nbsp;|&nbsp; <?php ?></p></a>
+    <button class='btn btn-success my-2 float-right' id="speakbt">
+      <i class="fa fa-microphone "></i>
+    </button>&nbsp;
+    <button class='btn btn-secondary my-2 float-right mr-2' id='stop'>
+      <i class="fas fa-stop"></i>
+    </button>
+    <button class='btn btn-secondary my-2 float-right' id='pause'>
+      <i class="fas fa-pause"></i>
+    </button> &nbsp;
+    <button class='btn btn-secondary my-2 float-right' id='play'>
+      <i class="fas fa-play"></i>
+    </button> &nbsp;
+    <div id="resultSpeak"></div> 
+
+  </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -76,6 +86,7 @@
     echo $this->Html->script('inputmask/jquery.inputmask.min.js');
     echo $this->Html->script('inputmask/bindings/inputmask.binding.js');
     echo $this->Html->script('bootstrap.bundle.min.js');
+    echo $this->Html->script('textToSpeech.js');
     echo $this->Js->writeBuffer();
     ?>
     <script>
