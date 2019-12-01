@@ -10,6 +10,7 @@
     ?>
 </head>
 <body>
+<div id='ler'>
 <div class="container-fluid bg-white">
     <a class="navbar-brand mr-auto"><p class="h4"> Educação 4.0 &nbsp;|&nbsp; <?php ?></p></a>
     <button class='btn btn-success my-2 float-right' id="speakbt">
@@ -73,6 +74,7 @@
             </div>
         </div>
     </main>
+  </div>
     <div vw class="enabled">
       <div vw-access-button class="active"></div>
       <div vw-plugin-wrapper>
