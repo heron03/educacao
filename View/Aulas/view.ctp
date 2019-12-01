@@ -1,6 +1,6 @@
 <?php
 $this->extend('/Common/form');
-$this->assign('title', 'Cadastrar Aula');
+$this->assign('title', 'Visualizar Aula');
 $controllerName = $this->request->params['controller'];
 
 $formFields = $this->element('formCreate');
@@ -10,10 +10,9 @@ $formFields .= $this->Html->div('form-row my-2',
         'div' => array('class' => 'form-group col-md-2 offset-mr-10'),
         'class' => array('form-control'),
         'type' => 'text',
-        'label' => array('text' => 'Data da Aula'),
+        'label' => array('text' => 'Data'),
         'required' => false,
         'disabled' => false,
-        'data-inputmask' => "'mask':'99/99/9999', 'greedy': false",
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
@@ -69,6 +68,5 @@ $formFields .= $this->Html->div('form-row my-2',
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
 );
-
 
 $this->assign('formFields', $formFields);
