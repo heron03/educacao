@@ -36,7 +36,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav col-md-11">
       <li class="nav-item active">
         <a class="nav-link" href="/educacao/disciplinas"><p class="h5"> Disciplinas </p><span class="sr-only"></span></a>
       </li>
@@ -57,7 +57,26 @@
         </div>
       </li>
 
-    </ul>
+	</ul>
+	<ul class="navbar-nav float-right">
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fa fa-user"></i>
+			</a>
+			<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="navbarDropdown">
+				<?php
+				echo $this->Html->link('Usuários', '/usuarios', array(
+					'escape' => false,
+					'class' => 'dropdown-item'
+				));
+				echo $this->Html->link('Sair', '/usuarios/logout', array(
+					'escape' => false,
+					'class' => 'dropdown-item'
+				));
+				?>
+			</div>
+		</li>
+	</ul>
   </div>
 </nav>
 <div class="search">
