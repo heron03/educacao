@@ -13,7 +13,7 @@ class DisciplinasController extends AppController {
         'limit' => 10
     );  
     
-    public function setPaginateConditions() {
+    public function setPaginateConditions($turmaId) {
         $nome = '';
         if ($this->request->is('post')) {
             $nome = $this->request->data['Disciplina']['nome'];
@@ -24,6 +24,18 @@ class DisciplinasController extends AppController {
         }
         if (!empty($nome)) {
             $this->paginate['conditions']['Disciplina.Nome LIKE'] = '%' . trim($nome) . '%';
+        }
+        $this->paginate['conditions']['Disciplina.turma_id'] = $turmaId;
+    }
+    
+    public function index($turmaId = null) {
+        if ($turmaId != null) {
+            $this->Session->write('Turma', $turmaId);
+        }
+        $this->setPaginateConditions($this->Session->read('Turma'));
+        $this->set('disciplinas', $this->paginate());
+        if ($this->request->is('ajax')) {
+            $this->layout = false;
         }
     }
 
@@ -38,7 +50,8 @@ class DisciplinasController extends AppController {
                 $this->redirect('/disciplinas');
             }
         }
-        $turmas = $this->Turma->getTurma();
+        $turmaId = $this->Session->read('Turma');
+        $turmas = $this->Turma->getTurma($turmaId);
         $this->set('turmas', $turmas);
 
         $contain = array();
@@ -61,8 +74,8 @@ class DisciplinasController extends AppController {
             $fields = array('Disciplina.id', 'Disciplina.nome');
             $conditions = array('Disciplina.id' => $id);
             $this->request->data = $this->Disciplina->find('first', compact('fields', 'conditions'));
-
-            $turmas = $this->Turma->getTurma();
+            $turmaId = $this->Session->read('Turma');
+            $turmas = $this->Turma->getTurma($turmaId);
             $this->set('turmas', $turmas);
     
             $contain = array();

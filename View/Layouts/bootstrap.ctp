@@ -40,9 +40,7 @@
         <a class="nav-link" href="/educacao/cursos"> <p class="h5"> Cursos</p></a>
       </li>
 	  <?php
-	  	if (AuthComponent::user('aro_parent_id') != 1) {
-			
-		}
+
 	  ?>
 	</ul>
 	<ul class="navbar-nav float-right">

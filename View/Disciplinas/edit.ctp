@@ -19,6 +19,7 @@ $formFields .= $this->Html->div('form-row my-2',
     $this->Form->input('Disciplina.turma_id', array(
         'label' => array('text' => 'Turma'),
         'required' => false,
+        'disabled' => true,
         'type' => 'select',
         'options' => $turmas,
         'div' => array('class' => 'form-group col-md-4'),

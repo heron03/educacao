@@ -17,7 +17,7 @@ $this->assign('searchFields', $searchFields);
 $titulos = array(
     array($this->Paginator->sort('Curso.nome', 'Nome') => array('width' => '40%')),
     array($this->Paginator->sort('Curso.semestres', 'Semestre') => array('width' => '40%')),
-    array('' => array('width' => '20%')),
+    '',
 );
 
 $tableHeaders = $this->Html->tableHeaders($titulos);
@@ -27,8 +27,11 @@ $detalhe = array();
 foreach ($cursos as $curso) {   
     $imprimirLote = null;
     $viewNome = $this->Js->link($curso['Curso']['nome'], '/cursos/view/' . $curso['Curso']['id'], array('update' => '#content'));
-    $editLink = $this->Js->link($this->Html->tag('span', '', array('class' => 'fas fa-pen')), '/cursos/edit/' . $curso['Curso']['id'], array('update' => '#content', 'class' => 'btn btn-secondary float-right ml-2', 'escape' => false, 'title' => 'Alterar'));
-    $excluirLink = $this->Js->link($this->Html->tag('span', '', array('class' => 'fas fa-trash')), '/cursos/delete/' . $curso['Curso']['id'], array('update' => '#content', 'class' => 'btn btn-secondary float-right ml-2', 'title' => 'delete', 'escape' => false, 'confirm' => 'Confirmar Exclusão ?'));
+    $excluirLink.$editLink = null;
+    if (AuthComponent::user('aro_parent_id') != 1) {		
+        $editLink = $this->Js->link($this->Html->tag('span', '', array('class' => 'fas fa-pen')), '/cursos/edit/' . $curso['Curso']['id'], array('update' => '#content', 'class' => 'btn btn-secondary float-right ml-2', 'escape' => false, 'title' => 'Alterar'));
+        $excluirLink = $this->Js->link($this->Html->tag('span', '', array('class' => 'fas fa-trash')), '/cursos/delete/' . $curso['Curso']['id'], array('update' => '#content', 'class' => 'btn btn-secondary float-right ml-2', 'title' => 'delete', 'escape' => false, 'confirm' => 'Confirmar Exclusão ?'));
+    }
 
     $detalhe[] = array(
         $viewNome,

@@ -12,7 +12,7 @@ $formFields .= $this->Html->div('form-row my-2',
         'type' => 'select',
         'label' => array('text' => 'Nome'),
         'required' => false,
-        'disabled' => false,
+        'disabled' => true,
         'options' => $cursos,
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     )) .

@@ -1,6 +1,6 @@
 <?php
 $this->extend('/Common/form');
-$this->assign('title', 'Visualizar Aula');
+$this->assign('title', $this->request->data['Aula']['nome']);
 $controllerName = $this->request->params['controller'];
 
 $formFields = $this->element('formCreate');
