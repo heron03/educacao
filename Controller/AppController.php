@@ -12,9 +12,9 @@ class AppController extends Controller {
         'Auth' => array(
             'flash' => array('element' => 'bootstrap', 'params' => array('key' => 'warning'), 'key' => 'warning'),
             'authError' => 'Você não possui permissão para acessar essa operação.',
-            'loginAction' => '/login',
+            'loginAction' => '/usuarios/login',
             'loginRedirect' => '/',
-            'logoutRedirect' => '/login',
+            'logoutRedirect' => '/usuarios/login',
             'authenticate' => array(
                 'Form' => array(
                     'userModel' => 'Usuario',
@@ -28,12 +28,10 @@ class AppController extends Controller {
     );
 
     public function beforeFilter() {
-        $this->Auth->mapActions(['read' => ['report']]);
+        $this->Auth->mapActions(['read']);
     }
 
     public function index() {
-        debug($this->Auth->user());
-exit;
         $this->setPaginateConditions();
         try {
             $this->set($this->getControllerName(), $this->paginate());        
