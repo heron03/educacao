@@ -9,6 +9,14 @@ class Usuario extends AppModel {
             'notBlank' => array('rule' => 'notBlank', 'message' => 'Informe o nome'),
             'minLength' => array('rule' => array('minLength', 3), 'message' => 'Informe um nome com mais de 2 dígitos'),
         ),
+        'senha' => array(
+            'notBlank' => array('rule' => 'notBlank', 'message' => 'Campo Obrigatório'),
+            'minLength' => array('rule' => array('minLength', 4), 'message' => 'Senha deve possuir mais de 3 dígitos.', 'last' => true),
+            'checkSenha' => array('rule' => 'checkSenha', 'message' => 'Senha informada não confere com a informada na confirmação.'),
+        ),
+        'confirma_senha' => array(
+            'notBlank' => array('rule' => 'notBlank', 'message' => 'Confirme a senha.', 'last' => true),
+        ),
         'login' => array(
             'isUnique' => array('rule' => 'isUnique', 'message' => 'Login já existe'),
         )
@@ -24,6 +32,16 @@ class Usuario extends AppModel {
 
         return true;
     }    
+
+    public function checkSenha($check) {
+        $result = true;
+        if (!empty($check) && isset($this->data["Usuario"]["confirma_senha"])) {
+            $values = array_values($check);
+            $result = $this->data["Usuario"]["confirma_senha"] == $values[0];
+        }
+        
+        return $result;
+    }
 
     public function afterSave($created, $options = array()) {
         if (!empty($this->data['Usuario']['aro_parent_id'])) {

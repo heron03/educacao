@@ -8,7 +8,7 @@ $form .= $this->Html->div('container h-100',
             $this->Html->tag('h1', 'e-PNE'
             )) .
             $this->Html->div(
-                'form-row ',
+                'form-row align-items-center',
             $this->Form->input('Usuario.login', array(
                 'required' => false,
                 'div' => false,
@@ -24,7 +24,8 @@ $form .= $this->Html->div('container h-100',
                 'class' => 'form-control', 
                 'error' => array('attributes' => array('class' => 'invalid-feedback'))    
             ))) .
-            $this->Form->submit('Entrar', array('div' => false, 'class' => 'btn btn-primary btn-lg btn-block mt-3'))
+            $this->Form->submit('Entrar', array('div' => false, 'class' => 'btn btn-primary btn-lg btn-block mt-3')) .
+            $this->Html->Link('Criar Conta', '/usuarios/usuarioNivel')
 )));
         
 $form .= $this->Flash->render('danger'); 
