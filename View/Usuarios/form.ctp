@@ -61,30 +61,18 @@ $formFields .= $this->Html->div(
             'error' => array('attributes' => array('class' => 'invalid-feedback'))
         ))
 );
-if (AuthComponent::user('aro_parent_id') == 2) {
-    $formFields .= $this->Html->div(
-        'form-row ',
-        $this->Form->input('Usuario.aro_parent_id', array(
-            'type' => 'select',
-            'div' => array('class' => 'form-group col-md-3 offset-mr-9'),
-            'class' => 'form-control',
-            'label' => array('text' => 'Nível de Usuário'),
-            'options' => $aros,
-        ))
-    );
-} else {
-    $formFields .= $this->Html->div(
-        'form-row ',
-        $this->Form->input('Usuario.aro_parent_id', array(
-            'type' => 'select',
-            'div' => array('class' => 'form-group col-md-3 offset-mr-9'),
-            'class' => 'form-control',
-            'label' => array('text' => 'Nível de Usuario'),
-            'options' => $aros,
-            'disabled' => true
-        ))
-    );
-    $formFields .= $this->Form->hidden('Usuario.aro_parent_id', array('value' => 1));
-}
+$formFields .= $this->Html->div(
+    'form-row ',
+    $this->Form->input('Usuario.aro_parent_id', array(
+        'type' => 'select',
+        'div' => array('class' => 'form-group col-md-3 offset-mr-9'),
+        'class' => 'form-control',
+        'label' => array('text' => 'Nível de Usuario'),
+        'options' => $aros,
+        'disabled' => true
+    ))
+);
+$formFields .= $this->Form->hidden('Usuario.aro_parent_id', array('value' => 1));
+
 
 $this->assign('formFields', $formFields);
