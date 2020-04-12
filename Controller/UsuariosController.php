@@ -11,9 +11,9 @@ class UsuariosController extends AppController {
     );
 
     public function beforeFilter() {
-        $this->Auth->allow(array('logout','login'));            
+        $this->Auth->allow(array('logout','login', 'index'));            
         parent::beforeFilter();
-    }             
+    }              
 
     public function setPaginateConditions() {
         $nome = '';
@@ -32,8 +32,8 @@ class UsuariosController extends AppController {
     public function add() {
         parent::add();
         $this->setAroList();
-    }
-
+    }   
+    
     public function edit($id = null) {
         parent::edit($id);
         $this->setAroList();

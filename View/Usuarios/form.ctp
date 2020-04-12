@@ -17,12 +17,11 @@ if ($this->request->params['action'] == 'view') {
 }
 
 $formFields = $this->Form->create('Usuario');
-$formFields .= $this->Form->hidden('Usuario.orgao_id', array('value' => AuthComponent::user('orgao_id')));
 $formFields .= $this->Form->hidden('Usuario.login');
 $formFields .= $this->Form->hidden('Usuario.nome');
 $formFields .= $this->Form->hidden('Usuario.cpf');
 $formFields .= $this->Form->hidden('Usuario.email');
-$formFields .= $this->Form->hidden('Usuario.assinante_id', array('value' => AuthComponent::user('Assinante.id')));
+
 $formFields .= $this->element('formCreate');
 $formFields .= $this->Html->div('form-row ',
     $this->Form->input('Usuario.login', array(
@@ -61,18 +60,6 @@ $formFields .= $this->Html->div(
             'error' => array('attributes' => array('class' => 'invalid-feedback'))
         ))
 );
-$formFields .= $this->Html->div(
-    'form-row ',
-    $this->Form->input('Usuario.aro_parent_id', array(
-        'type' => 'select',
-        'div' => array('class' => 'form-group col-md-3 offset-mr-9'),
-        'class' => 'form-control',
-        'label' => array('text' => 'Nível de Usuario'),
-        'options' => $aros,
-        'disabled' => true
-    ))
-);
-$formFields .= $this->Form->hidden('Usuario.aro_parent_id', array('value' => 1));
 
 
 $this->assign('formFields', $formFields);

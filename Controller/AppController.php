@@ -27,8 +27,13 @@ class AppController extends Controller {
         'Acl'
     );
 
+    public function beforeFilter() {
+        $this->Auth->mapActions(['read' => ['report']]);
+    }
 
     public function index() {
+        debug($this->Auth->user());
+exit;
         $this->setPaginateConditions();
         try {
             $this->set($this->getControllerName(), $this->paginate());        
@@ -40,8 +45,50 @@ class AppController extends Controller {
         }
     }
 
+    public function add() {
+        if (!empty($this->request->data)) {
+            $this->{$this->getModelName()}->create();
+            if ($this->{$this->getModelName()}->save($this->request->data)) {
+                $this->Flash->bootstrap('Gravado com sucesso!', array('key' => 'success'));
+                $this->redirect('/' . $this->getControllerName());
+            }
+        }
+    }
+
+    public function edit($id = null) {
+        if (!empty($this->request->data)) {
+            if ($this->{$this->getModelName()}->save($this->request->data)) {
+                $this->Flash->bootstrap('Alterado com sucesso!', array('key' => 'success'));
+                $this->redirect('/' . $this->getControllerName());
+            }
+        } else {
+            $this->request->data = $this->getEditData($id);
+        }
+    }
+
+    public function view($id = null) {
+        $this->request->data = $this->getEditData($id);
+    }
+
+    public function delete($id) {
+        $this->{$this->getModelName()}->delete($id);
+        $this->Flash->bootstrap('Excluído com sucesso!', array('key' => 'warning'));
+        $this->redirect('/' . $this->getControllerName());
+    }
+
+    public function report() {
+        $this->layout = false;
+        $this->response->type('pdf');
+        $this->set($this->getControllerName(), $this->paginate());        
+    }
+
     public function getControllerName() {
         return $this->request->params['controller'];
     }
+
+    public function getModelName() {
+        return $this->modelClass;
+    }
+
 }
 ?>

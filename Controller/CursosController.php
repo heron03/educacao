@@ -12,7 +12,9 @@ class CursosController extends AppController {
         'order' => array('Curso.id' => 'desc'),
         'limit' => 10
     );  
-    
+    public function beforeFilter() {
+        $this->Auth->mapActions(['read']);
+    }
     public function setPaginateConditions() {
         $nome = '';
         if ($this->request->is('post')) {
