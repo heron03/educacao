@@ -14,8 +14,19 @@ class TurmasController extends AppController {
         'order' => array('Turma.id' => 'desc'),
         'limit' => 10
     );  
+
+    public function index($cursoId = null) {
+        if ($cursoId != null) {
+            $this->Session->write('Curso', $cursoId);
+        }
+        $this->setPaginateConditions($this->Session->read('Curso'));
+        $this->set('turmas', $this->paginate());
+        if ($this->request->is('ajax')) {
+            $this->layout = false;
+        }
+    }
     
-    public function setPaginateConditions() {
+    public function setPaginateConditions($cursoId) {
         $nome = '';
         if ($this->request->is('post')) {
             $nome = $this->request->data['Turma']['nome'];
@@ -27,6 +38,7 @@ class TurmasController extends AppController {
         if (!empty($nome)) {
             $this->paginate['conditions']['Turma.Nome LIKE'] = '%' . trim($nome) . '%';
         }
+        $this->paginate['conditions']['Turma.curso_id'] = $cursoId;
     }
 
     public function add() {
@@ -40,9 +52,10 @@ class TurmasController extends AppController {
                 $this->redirect('/turmas');
             }
         }
-
+        $cursoId = $this->Session->read('Curso');
         $fields = array('Curso.nome');
-        $cursos = $this->Curso->find('list', compact('fields'));
+        $conditions = array('Curso.id' => $cursoId);
+        $cursos = $this->Curso->find('list', compact('fields', 'conditions'));
         $this->set('cursos', $cursos);
     }
 
@@ -56,7 +69,7 @@ class TurmasController extends AppController {
                 $this->redirect('/turmas');
             }
         } else {
-            $fields = array('Turma.id', 'Turma.curso_id', 'Turma.semestres', 'Turma.ano');
+            $fields = array('Turma.id', 'Turma.curso_id', 'Turma.semestres');
             $conditions = array('Turma.id' => $id);
             $this->request->data = $this->Turma->find('first', compact('fields', 'conditions'));
         }
@@ -70,13 +83,8 @@ class TurmasController extends AppController {
         if ($this->request->is('ajax')) {
             $this->layout = false;
         }
-        $fields = array('Turma.id', 'Turma.curso_id', 'Turma.semestres', 'Turma.ano');
-        $conditions = array('Turma.id' => $id);
-        $this->request->data = $this->Turma->find('first', compact('fields', 'conditions'));
-
-        $fields = array('Curso.nome');
-        $cursos = $this->Curso->find('list', compact('fields'));
-        $this->set('cursos', $cursos);
+        
+        $this->redirect('/disciplinas/index/' . $id);
     }
 
     public function delete($id) {

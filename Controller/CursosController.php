@@ -62,9 +62,7 @@ class CursosController extends AppController {
         if ($this->request->is('ajax')) {
             $this->layout = false;
         }
-        $fields = array('Curso.id', 'Curso.nome');
-        $conditions = array('Curso.id' => $id);
-        $this->request->data = $this->Curso->find('first', compact('fields', 'conditions'));
+        $this->redirect('/turmas/index/' . $id);
     }
 
     public function delete($id) {

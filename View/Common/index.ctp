@@ -1,14 +1,17 @@
 <?php
 $controllerName = $this->request->params['controller'];
 
-$novoButton = $this->Js->link(
-    $this->Html->tag('i', '', array(
-        'class' => 'fas fa-plus '
-    )) . 
-    '&nbsp;Incluir',
-    '/' . $controllerName . '/add', 
-    array('class' => 'btn btn-success float-right', 'escape' => false, 'update' => '#content')
-);
+$novoButton =  $this->Html->tag('float-right');
+if (AuthComponent::user('aro_parent_id') != 1) {
+    $novoButton = $this->Js->link(
+        $this->Html->tag('i', '', array(
+            'class' => 'fas fa-plus '
+        )) . 
+        '&nbsp;Incluir',
+        '/' . $controllerName . '/add', 
+        array('class' => 'btn btn-success float-right', 'escape' => false, 'update' => '#content')
+    );
+}
 
 $filtro = $this->Form->create(false, array('class' => 'form-inline'));
 $filtro .= $this->fetch('searchFields'); 

@@ -14,13 +14,14 @@ class Turma extends AppModel {
         'nomeSemestre' => "CONCAT(Curso.nome, ' - ', Turma.semestres, '° Semestre')",
     );
 
-    public function getTurma() {
+    public function getTurma($id) {
         $this->virtualFields = array(
             'nomeSemestre' => "CONCAT(Curso.nome, ' - ', Turma.semestres, '° Semestre')"
         );
         $contain = array('Curso' => array('fields' => 'Curso.nome'));
         $fields = array('Turma.id', 'Turma.nomeSemestre');
-        $retorno = $this->find('list', compact('fields', 'contain'));
+        $conditions = array('Turma.id' => $id);
+        $retorno = $this->find('list', compact('fields', 'contain', 'conditions'));
 
         return $retorno;
     }

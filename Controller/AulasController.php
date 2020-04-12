@@ -13,7 +13,7 @@ class AulasController extends AppController {
         'limit' => 10
     );  
     
-    public function setPaginateConditions() {
+    public function setPaginateConditions($disciplinaId) {
         $nome = '';
         if ($this->request->is('post')) {
             $nome = $this->request->data['Aula']['nome'];
@@ -24,6 +24,18 @@ class AulasController extends AppController {
         }
         if (!empty($nome)) {
             $this->paginate['conditions']['Aula.Nome LIKE'] = '%' . trim($nome) . '%';
+        }
+        $this->paginate['conditions']['Aula.disciplina_id'] = $disciplinaId;
+    }
+
+    public function index($disciplinaId = null) {
+        if ($disciplinaId != null) {
+            $this->Session->write('Disciplina', $disciplinaId);
+        }
+        $this->setPaginateConditions($this->Session->read('Disciplina'));
+        $this->set('aulas', $this->paginate());
+        if ($this->request->is('ajax')) {
+            $this->layout = false;
         }
     }
 
@@ -49,8 +61,10 @@ class AulasController extends AppController {
                 $this->redirect('/aulas');
             }
         }
+        $disciplinaId = $this->Session->read('Disciplina');
+        $conditions = array('Disciplina.id' => $disciplinaId);
         $fields = array('Disciplina.nome');
-        $disciplinas = $this->Disciplina->find('list', compact('fields'));
+        $disciplinas = $this->Disciplina->find('list', compact('fields', 'conditions'));
         $this->set('disciplinas', $disciplinas);
     }
 

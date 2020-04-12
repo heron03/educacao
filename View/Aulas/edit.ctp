@@ -45,6 +45,7 @@ $formFields .= $this->Html->div('form-row my-2',
         'type' => 'select',
         'label' => array('text' => 'Disciplina'),
         'required' => false,
+        'disabled' => true,
         'readonly' => false,
         'options' => $disciplinas,
         'error' => array('attributes' => array('class' => 'invalid-feedback'))

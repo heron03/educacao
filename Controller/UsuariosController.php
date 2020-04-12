@@ -11,8 +11,9 @@ class UsuariosController extends AppController {
     );
 
     public function beforeFilter() {
-        $this->Auth->allow(array('logout','login', 'add', 'usuarioNivel'));            
-        parent::beforeFilter();
+        $this->Auth->allow(array('logout','login', 'add', 'usuarioNivel'));       
+        
+        $this->Auth->mapActions(['read' => ['alterarsenha', 'bloquear', 'desbloquear', 'loginRedirect']]);
     }              
 
     public function setPaginateConditions() {
@@ -29,6 +30,14 @@ class UsuariosController extends AppController {
         }
     }
 
+    public function usuarioNivel(){
+        $this->layout = 'login';
+        $this->setAroList();
+        if (!empty($this->request->data)) {
+            $this->redirect('add/' . $this->request->data['Usuario']['aro_parent_id']);
+        }
+    }
+
     public function add($parentId = null) {
         $this->layout = 'login';
         if (!empty($this->request->data)) {
@@ -41,21 +50,35 @@ class UsuariosController extends AppController {
         }
     }   
     
-    public function usuarioNivel(){
-        $this->layout = 'login';
-        $this->setAroList();
-        if (!empty($this->request->data)) {
-            $this->redirect('add/' . $this->request->data['Usuario']['aro_parent_id']);
+    public function alterarsenha($id) {
+        if ($this->request->is('ajax')) {
+            $this->layout = false;
         }
+        if (!empty($this->request->data)) {
+            if ($this->Usuario->saveAll($this->request->data)) {
+                $this->Flash->bootstrap('Alterado com sucesso!', array('key' => 'success'));
+                $this->redirect('/');
+            }
+        } else {
+            $conditions = array('Usuario.id' => $id);
+            $contain = array();
+            $this->request->data = $this->Usuario->find('first', compact('conditions', 'contain'));
+            $this->request->data['Usuario']['senha'] = '';
+        }
+        $this->setAroList();
+        $this->autoRender = false;
+        $this->render('form');
     }
-    
+
     public function edit($id = null) {
         parent::edit($id);
         $this->setAroList();
+        $this->autoRender = false;
+        $this->render('form');
     }
 
     public function getEditData($id) {        
-        $fields = array('Usuario.id', 'Usuario.nome', 'Usuario.login', 'Usuario.aro_parent_id');
+        $fields = array('Usuario.id', 'Usuario.nome', 'Usuario.login', 'Usuario.email');
         $conditions = array('Usuario.id' => $id);
         
         return $this->Usuario->find('first', compact('fields', 'conditions'));

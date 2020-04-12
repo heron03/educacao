@@ -37,25 +37,11 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav col-md-11">
       <li class="nav-item active">
-        <a class="nav-link" href="/educacao/disciplinas"><p class="h5"> Disciplinas </p><span class="sr-only"></span></a>
+        <a class="nav-link" href="/educacao/cursos"> <p class="h5"> Cursos</p></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/educacao/aulas"><p class="h5"> Aulas</p></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/educacao/provas"> <p class="h5"> Provas</p></a>
-      </li>
-      <li class="nav-item dropdown  active">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <spam class="h5"> 
-          Instituição
-        </spam></a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/educacao/escolas">Escolas</a>
-          <a class="dropdown-item" href="/educacao/cursos">Cursos</a>
-          <a class="dropdown-item" href="/educacao/turmas">Turmas</a>
-        </div>
-      </li>
+	  <?php
 
+	  ?>
 	</ul>
 	<ul class="navbar-nav float-right">
 		<li class="nav-item dropdown">
@@ -64,10 +50,14 @@
 			</a>
 			<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="navbarDropdown">
 				<?php
-				echo $this->Html->link('Usuários', '/usuarios', array(
+				echo $this->Html->link('Usuários', '/usuarios/edit/' . AuthComponent::user('id'), array(
 					'escape' => false,
 					'class' => 'dropdown-item'
-				));
+        ));
+				echo $this->Html->link('Alterar Senha', '/usuarios/alterarsenha/' . AuthComponent::user('id'), array(
+					'escape' => false,
+					'class' => 'dropdown-item'
+        ));
 				echo $this->Html->link('Sair', '/usuarios/logout', array(
 					'escape' => false,
 					'class' => 'dropdown-item'
@@ -79,10 +69,7 @@
   </div>
 </nav>
 <div class="search">
-            
-            
-
-        </div>
+</div>
 <main role="main" class="container-fluid">
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             <div class="media text-muted pt-3">

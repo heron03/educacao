@@ -43,19 +43,11 @@ $formFields .= $this->Html->div('form-row ',
 );
 $formFields .= $this->Html->div(
     'form-row',
-    $this->Form->input('Usuario.cpf', array(
-        'label' => array('text' => 'CPF'),
-        'required' => false,
-        'div' => array('class' => 'form-group  col-md-3'),
-        'class' => 'form-control',
-        'error' => array('attributes' => array('class' => 'invalid-feedback')),
-        'data-inputmask' => "'mask': '9', 'repeat': 11, 'greedy' : false"
-    )) .
         $this->Form->input('Usuario.email', array(
             'type' => 'text',
             'required' => false,
             'label' => array('text' => 'E-mail'),
-            'div' => array('class' => 'form-group col-md-6 offset-md-3'),
+            'div' => array('class' => 'form-group col-md-6'),
             'class' => 'form-control uppercase',
             'error' => array('attributes' => array('class' => 'invalid-feedback'))
         ))
