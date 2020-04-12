@@ -11,7 +11,7 @@ class UsuariosController extends AppController {
     );
 
     public function beforeFilter() {
-        $this->Auth->allow(array('logout','login', 'index'));            
+        $this->Auth->allow(array('logout','login', 'add', 'usuarioNivel'));            
         parent::beforeFilter();
     }              
 
@@ -29,10 +29,25 @@ class UsuariosController extends AppController {
         }
     }
 
-    public function add() {
-        parent::add();
-        $this->setAroList();
+    public function add($parentId = null) {
+        $this->layout = 'login';
+        if (!empty($this->request->data)) {
+            if ($this->Usuario->save($this->request->data)) {
+                $this->Flash->bootstrap('Gravado com sucesso!', array('key' => 'success'));
+                $this->redirect('/login');
+            }
+        } else {
+            $this->request->data['Usuario']['aro_parent_id'] = $parentId;
+        }
     }   
+    
+    public function usuarioNivel(){
+        $this->layout = 'login';
+        $this->setAroList();
+        if (!empty($this->request->data)) {
+            $this->redirect('add/' . $this->request->data['Usuario']['aro_parent_id']);
+        }
+    }
     
     public function edit($id = null) {
         parent::edit($id);
