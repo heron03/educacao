@@ -70,13 +70,8 @@ class TurmasController extends AppController {
         if ($this->request->is('ajax')) {
             $this->layout = false;
         }
-        $fields = array('Turma.id', 'Turma.curso_id', 'Turma.semestres', 'Turma.ano');
-        $conditions = array('Turma.id' => $id);
-        $this->request->data = $this->Turma->find('first', compact('fields', 'conditions'));
-
-        $fields = array('Curso.nome');
-        $cursos = $this->Curso->find('list', compact('fields'));
-        $this->set('cursos', $cursos);
+        
+        $this->redirect('/disciplinas/index/' . $id);
     }
 
     public function delete($id) {

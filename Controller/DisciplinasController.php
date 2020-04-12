@@ -43,7 +43,8 @@ class DisciplinasController extends AppController {
 
         $contain = array();
         $fields = array('Usuario.id', 'Usuario.nome');
-        $usuarios = $this->Usuario->find('list', compact('fields', 'contain'));
+        $conditions = array('Usuario.aro_parent_id' => 2);
+        $usuarios = $this->Usuario->find('list', compact('fields', 'contain', 'conditions'));
         $this->set('usuarios', $usuarios);
     }
 
@@ -75,16 +76,7 @@ class DisciplinasController extends AppController {
         if ($this->request->is('ajax')) {
             $this->layout = false;
         }
-        $fields = array('Disciplina.id', 'Disciplina.nome');
-        $conditions = array('Disciplina.id' => $id);
-        $this->request->data = $this->Disciplina->find('first', compact('fields', 'conditions'));
-        $turmas = $this->Turma->getTurma();
-        $this->set('turmas', $turmas);
-
-        $contain = array();
-        $fields = array('Usuario.id', 'Usuario.nome');
-        $usuarios = $this->Usuario->find('list', compact('fields', 'contain'));
-        $this->set('usuarios', $usuarios);
+        $this->redirect('/aulas/index/' . $id);
     }
 
     public function delete($id) {
