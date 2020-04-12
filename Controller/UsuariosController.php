@@ -140,8 +140,7 @@ class UsuariosController extends AppController {
     }
 
     public function login() {
-        $url = '//' . $_SERVER['SERVER_NAME'] . '/sipladu';
-        $this->redirect($url);
+        
     }
 
     public function loginRedirect() {
