@@ -23,7 +23,7 @@ $formFields .= $this->Form->hidden('Usuario.cpf');
 $formFields .= $this->Form->hidden('Usuario.email');
 
 $formFields .= $this->element('formCreate');
-$formFields .= $this->Html->div('form-row ',
+$formFields .= $this->Html->div('form-row',
     $this->Form->input('Usuario.login', array(
         'type' => 'text',
         'label' => array('text' => 'Login'),
@@ -32,25 +32,24 @@ $formFields .= $this->Html->div('form-row ',
         'class' => 'form-control uppercase',
         'error' => array('attributes' => array('class' => 'invalid-feedback')),
         'disabled' => $desabilitar
-    )) .
+    )) 
+);
+$formFields .= $this->Html->div('form-row',
     $this->Form->input('Usuario.nome', array(
         'label' => array('text' => 'Nome Completo'),
         'required' => false,
-        'div' => array('class' => 'form-group col-md-6 offset-md-3'),
+        'div' => array('class' => 'form-group col-md-6'),
+        'class' => 'form-control uppercase',
+        'error' => array('attributes' => array('class' => 'invalid-feedback'))
+    )) .
+    $this->Form->input('Usuario.email', array(
+        'type' => 'text',
+        'required' => false,
+        'label' => array('text' => 'E-mail'),
+        'div' => array('class' => 'form-group col-md-6 offset-mr-6'),
         'class' => 'form-control uppercase',
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     ))
-);
-$formFields .= $this->Html->div(
-    'form-row',
-        $this->Form->input('Usuario.email', array(
-            'type' => 'text',
-            'required' => false,
-            'label' => array('text' => 'E-mail'),
-            'div' => array('class' => 'form-group col-md-6'),
-            'class' => 'form-control uppercase',
-            'error' => array('attributes' => array('class' => 'invalid-feedback'))
-        ))
 );
 
 

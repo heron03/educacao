@@ -6,7 +6,7 @@ if ($this->request->data['Usuario']['aro_parent_id'] == 3) {
         $this->Html->div('row h-100 justify-content-center align-items-center',
             $this->Html->div('col-10 col-md-8 col-lg-6',
                 $this->Html->div('text-center',
-                $this->Html->tag('h3', 'Oque você é ?') .
+                    $this->Html->tag('h3', 'Cadastro de Usuário') .
                     $this->Html->div('form align-items-center',
                         $this->Form->input('Usuario.login', array(
                             'type' => 'text',
@@ -75,7 +75,7 @@ if ($this->request->data['Usuario']['aro_parent_id'] == 3) {
         $this->Html->div('row h-100 justify-content-center align-items-center',
             $this->Html->div('col-10 col-md-8 col-lg-6',
                 $this->Html->div('text-center',
-                $this->Html->tag('h3', 'Oque você é ?') .
+                $this->Html->tag('h3', 'Cadastro de Usuário') .
                     $this->Html->div('form align-items-center',
                         $this->Form->input('Usuario.login', array(
                             'type' => 'text',
