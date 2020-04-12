@@ -24,7 +24,7 @@ $form .= $this->Html->div('container h-100',
                 'class' => 'form-control', 
                 'error' => array('attributes' => array('class' => 'invalid-feedback'))    
             ))) .
-            $this->Form->submit('Entrar', array('div' => false, 'class' => 'btn btn-primary btn-lg btn-block mb-3'))
+            $this->Form->submit('Entrar', array('div' => false, 'class' => 'btn btn-primary btn-lg btn-block mt-3'))
 )));
         
 $form .= $this->Flash->render('danger'); 

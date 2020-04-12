@@ -26,7 +26,7 @@ class AppController extends Controller {
         ),  
         'Acl'
     );
-
+   
     public function beforeFilter() {
         $this->Auth->mapActions(['read']);
     }
@@ -72,12 +72,6 @@ class AppController extends Controller {
         $this->{$this->getModelName()}->delete($id);
         $this->Flash->bootstrap('Excluído com sucesso!', array('key' => 'warning'));
         $this->redirect('/' . $this->getControllerName());
-    }
-
-    public function report() {
-        $this->layout = false;
-        $this->response->type('pdf');
-        $this->set($this->getControllerName(), $this->paginate());        
     }
 
     public function getControllerName() {
