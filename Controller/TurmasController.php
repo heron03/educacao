@@ -4,6 +4,12 @@ App::uses('AppController', 'Controller');
 class TurmasController extends AppController {
     public $uses = array('Turma', 'Curso');
     
+    public function beforeFilter() {
+        $this->Auth->allow(array('logout','login', 'usuarioNivel'));       
+        
+        $this->Auth->mapActions(['read' => ['alterarsenha', 'bloquear', 'desbloquear', 'loginRedirect']]);
+    } 
+
     public $paginate = array(
         'fields' => array(
             'Turma.id',

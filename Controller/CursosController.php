@@ -1,13 +1,13 @@
 <?php
 App::uses('AppController', 'Controller');
 class CursosController extends AppController {
-    public $uses = array('Curso');
+    public $uses = array('Curso', 'Turma', 'Disciplina');
     public $paginate = array(
         'fields' => array(
             'Curso.id',
             'Curso.nome',
             'Curso.semestres',
-
+            'Curso.usuario_id'
         ),
         'order' => array('Curso.id' => 'desc'),
         'limit' => 10
@@ -26,6 +26,38 @@ class CursosController extends AppController {
         }
         if (!empty($nome)) {
             $this->paginate['conditions']['Curso.Nome LIKE'] = '%' . trim($nome) . '%';
+        }
+        if ($this->Auth->User('aro_parent_id') == 3) {
+            $this->paginate['conditions']['Curso.usuario_id'] = $this->Auth->User('id');
+        }
+    }
+
+    public function index() {
+        $this->setPaginateConditions();
+        $cursos = $this->paginate();
+        if ($this->Auth->User('aro_parent_id') == 2) {
+            $cursos = array();
+            foreach($this->paginate() as $curso) {
+                if ($curso['Curso']['usuario_id'] == $this->Auth->User('id')) {
+                    array_push($cursos, $curso);
+                } 
+            }
+            $contain = array('Turma' => array('fields' => 'curso_id'));
+            $conditions = array('Disciplina.usuario_id' => $this->Auth->User('id'));
+            $fields = array('Turma.curso_id', 'Turma.curso_id');
+            $turmas = $this->Disciplina->find('list', compact('fields', 'conditions', 'contain'));
+            foreach ($turmas as $turma) {
+                $conditions = array('Curso.id' => $turma);
+                $curso = $this->Curso->find('first', compact('conditions'));
+                if ($curso['Curso']['usuario_id'] != $this->Auth->User('id')) {
+                    array_push($cursos, $curso);
+                }
+                
+            }
+        }
+        $this->set('cursos', $cursos);
+        if ($this->request->is('ajax')) {
+            $this->layout = false;
         }
     }
 

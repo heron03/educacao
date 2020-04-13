@@ -26,6 +26,9 @@ class DisciplinasController extends AppController {
             $this->paginate['conditions']['Disciplina.Nome LIKE'] = '%' . trim($nome) . '%';
         }
         $this->paginate['conditions']['Disciplina.turma_id'] = $turmaId;
+        if ($this->Auth->User('aro_parent_id') == 2) {
+            $this->paginate['conditions']['Disciplina.usuario_id'] = $this->Auth->User('id');
+        }
     }
     
     public function index($turmaId = null) {
@@ -53,10 +56,12 @@ class DisciplinasController extends AppController {
         $turmaId = $this->Session->read('Turma');
         $turmas = $this->Turma->getTurma($turmaId);
         $this->set('turmas', $turmas);
-
         $contain = array();
         $fields = array('Usuario.id', 'Usuario.nome');
         $conditions = array('Usuario.aro_parent_id' => 2);
+        if ($this->Auth->User('aro_parent_id') == 2) {
+            $conditions = array('Usuario.id' => $this->Auth->User('id'));
+        }
         $usuarios = $this->Usuario->find('list', compact('fields', 'contain', 'conditions'));
         $this->set('usuarios', $usuarios);
     }
@@ -80,7 +85,11 @@ class DisciplinasController extends AppController {
     
             $contain = array();
             $fields = array('Usuario.id', 'Usuario.nome');
-            $usuarios = $this->Usuario->find('list', compact('fields', 'contain'));
+            $conditions = array('Usuario.aro_parent_id' => 2);
+            if ($this->Auth->User('aro_parent_id') == 2) {
+                $conditions = array('Usuario.id' => $this->Auth->User('id'));
+            }
+            $usuarios = $this->Usuario->find('list', compact('fields', 'contain', 'conditions'));
             $this->set('usuarios', $usuarios);
         }
    }
