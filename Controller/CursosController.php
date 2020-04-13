@@ -1,7 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
 class CursosController extends AppController {
+    
     public $uses = array('Curso', 'Turma', 'Disciplina');
+    
     public $paginate = array(
         'fields' => array(
             'Curso.id',
@@ -12,9 +14,11 @@ class CursosController extends AppController {
         'order' => array('Curso.id' => 'desc'),
         'limit' => 10
     );  
+    
     public function beforeFilter() {
         $this->Auth->mapActions(['read']);
     }
+
     public function setPaginateConditions() {
         $nome = '';
         if ($this->request->is('post')) {
