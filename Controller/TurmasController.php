@@ -2,8 +2,14 @@
 App::uses('AppController', 'Controller');
 
 class TurmasController extends AppController {
-    public $uses = array('Turma', 'Curso');
+    public $uses = array('Turma', 'Curso', 'Disciplina');
     
+    public function beforeFilter() {
+        $this->Auth->allow(array('logout','login', 'usuarioNivel'));       
+        
+        $this->Auth->mapActions(['read' => ['alterarsenha', 'bloquear', 'desbloquear', 'loginRedirect']]);
+    } 
+
     public $paginate = array(
         'fields' => array(
             'Turma.id',
@@ -20,7 +26,19 @@ class TurmasController extends AppController {
             $this->Session->write('Curso', $cursoId);
         }
         $this->setPaginateConditions($this->Session->read('Curso'));
-        $this->set('turmas', $this->paginate());
+        $turmas = $this->paginate();
+        if ($this->Auth->User('aro_parent_id') == 2) {
+            $turmas = array();
+            $conditions = array('Disciplina.usuario_id' => $this->Auth->User('id'));
+            $fields = array('Disciplina.turma_id', 'Disciplina.turma_id');
+            $disciplinas = $this->Disciplina->find('list', compact('fields', 'conditions', 'contain'));
+            foreach ($disciplinas as $turma) {
+                $conditions = array('Turma.id' => $turma);
+                $turma = $this->Turma->find('first', compact('conditions'));
+                array_push($turmas, $turma);
+            }
+        }
+        $this->set('turmas', $turmas);
         if ($this->request->is('ajax')) {
             $this->layout = false;
         }
