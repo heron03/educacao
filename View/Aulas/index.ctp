@@ -26,7 +26,7 @@ $this->assign('tableHeaders', $tableHeaders);
 
 $detalhe = array();
 foreach ($aulas as $aula) { 
-    $viewData = date('d/m/Y', $aula['Aula']['data']);
+    $viewData =  date('d/m/Y', strtotime($aula['Aula']['data']));
     $viewNome = $this->Js->link($aula['Aula']['nome'], '/aulas/view/' . $aula['Aula']['id'], array('update' => '#content'));
     $viewData = $this->Js->link($viewData, '/aulas/view/' . $aula['Aula']['id'], array('update' => '#content'));    $excluirLink.$editLink = null;
     if (AuthComponent::user('aro_parent_id') != 1) {

@@ -5,6 +5,9 @@ $controllerName = $this->request->params['controller'];
 
 $formFields = $this->element('formCreate');
 $formFields .= $this->Form->hidden('Turma.id');
+if (AuthComponent::user('aro_parent_id') == 2) {
+    $formFields .= $this->Form->hidden('Turma.usuario_id', array('value' => AuthComponent::user('id')));
+}
 $formFields .= $this->Html->div('form-row my-2',  
     $this->Form->input('Turma.curso_id', array(
         'div' => array('class' => 'form-group col-md-6 offset-mr-6'),
@@ -12,7 +15,7 @@ $formFields .= $this->Html->div('form-row my-2',
         'type' => 'select',
         'label' => array('text' => 'Nome'),
         'required' => false,
-        'disabled' => true,
+        'readonly' => true,
         'options' => $cursos,
         'error' => array('attributes' => array('class' => 'invalid-feedback'))
     )) .
@@ -21,7 +24,7 @@ $formFields .= $this->Html->div('form-row my-2',
         'class' => array('form-control'),
         'type' => 'text',
         'label' => array('text' => 'Semestre Atual'),
-        'required' => false,
+        'readonly' => false,
         'disabled' => false,
         'error' => array('attributes' => array('class' => 'invalid-feedback')),
     )) 

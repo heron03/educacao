@@ -39,7 +39,7 @@ foreach ($turmas as $turma) {
         $excluirLink = $this->Js->link($this->Html->tag('span', '', array('class' => 'fas fa-trash')), '/turmas/delete/' . $turma['Turma']['id'], array('update' => '#content', 'class' => 'btn btn-secondary float-right ml-2', 'title' => 'delete', 'escape' => false, 'confirm' => 'Confirmar Exclusão ?'));
         $detalhe[] = array(
             $viewNome,
-            base64_encode($turma['Turma']['id']),
+            'http://e-pne.com.br/educacao/cursos/novaTurma/' . base64_encode($turma['Turma']['id']),
             $excluirLink.$editLink
         );
     } else {

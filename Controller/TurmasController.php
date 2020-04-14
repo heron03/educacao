@@ -29,14 +29,17 @@ class TurmasController extends AppController {
         $turmas = $this->paginate();
         if ($this->Auth->User('aro_parent_id') == 2) {
             $turmas = array();
+            $conditions = array('Turma.usuario_id' => $this->Auth->User('id'));
+            $turmas = $this->Turma->find('all', compact('conditions'));
             $conditions = array('Disciplina.usuario_id' => $this->Auth->User('id'));
             $fields = array('Disciplina.turma_id', 'Disciplina.turma_id');
             $disciplinas = $this->Disciplina->find('list', compact('fields', 'conditions', 'contain'));
+            $turma = null;
             foreach ($disciplinas as $turma) {
                 $conditions = array('Turma.id' => $turma);
                 $turma = $this->Turma->find('first', compact('conditions'));
                 array_push($turmas, $turma);
-            }
+            }       
         }
         $this->set('turmas', $turmas);
         if ($this->request->is('ajax')) {
