@@ -36,7 +36,7 @@ if (AuthComponent::user('aro_parent_id') == 2) {
             'required' => false,
             'type' => 'select',
             'options' => $usuarios,
-            'disabled' => true,
+            'readonly' => true,
             'div' => array('class' => 'form-group col-md-4'),
             'class' => 'form-control',
             'error' => array('attributes' => array('class' => 'invalid-feedback'))

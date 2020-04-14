@@ -55,7 +55,6 @@ class AulasController extends AppController {
         }
         if (!empty($this->request->data)) {
             $this->Aula->create();
-            
             if ($this->Aula->save($this->request->data)) {
                 $this->Flash->bootstrap('Aula cadastrada com sucesso!', array('key' => 'success'));
                 $this->redirect('/aulas');
